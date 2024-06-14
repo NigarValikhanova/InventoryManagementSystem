@@ -30,6 +30,8 @@ namespace Application.Service
 
         //public async Task<IEnumerable<IGrouping<DateTime, ActivityTrackerResponseDTO>>>
         //{
+        //  var data = (await GetActivitiesAsync()).GroupBy(e=>e.Date).AsEnumerable();
+        //  return data;
         //}
 
     }

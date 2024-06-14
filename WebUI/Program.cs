@@ -1,8 +1,12 @@
-using Infrastructure.DependencyInjection;
 using WebUI.Components;
-
+using Application.DependencyInjection;
+using Infrastructure.DependencyInjection;
+using WebUI.Components.Layout.Identity;
+using Microsoft.AspNetCore.Components.Authorization;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddInfrastrutureService(builder.Configuration);
+builder.Services.AddApplicationService();
+builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthStateProvider>();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -24,5 +28,5 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
-
+app.MapSignOutEndpoint();
 app.Run();

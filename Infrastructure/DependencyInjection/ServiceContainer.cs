@@ -39,6 +39,7 @@ namespace Infrastructure.DependencyInjection
                 adp.RequireAuthenticatedUser();
                 adp.RequireRole("User");
             });
+            services.AddCascadingAuthenticationState();
             services.AddScoped<Application.Interface.Identity.IAccount, Account>();
             return services;
 
