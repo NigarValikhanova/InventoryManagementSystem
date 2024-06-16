@@ -11,7 +11,9 @@
 @using WebUI.Components.Layout.Identity
 @using Microsoft.AspNetCore.Components.Authorization
 
+
 @layout AuthenticationLayout
 @attribute [AllowAnonymous]
 @inject IAccountService accountService
 @inject NavigationManager NavManager
+@using Application.DTO.Request.Identity
