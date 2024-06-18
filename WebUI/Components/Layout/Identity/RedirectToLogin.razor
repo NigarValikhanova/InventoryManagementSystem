@@ -1,17 +1,4 @@
-﻿@page "/RedirectToLogin"
-@using Microsoft.AspNetCore.Components.Authorization
-@inject NavigationManager Navigation
-@inject AuthenticationStateProvider AuthenticationStateProvider
-
-@code {
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-
-        if (user == null || !user.Identity.IsAuthenticated)
-        {
-            Navigation.NavigateTo("login", true);
-        }
-    }
+﻿@code {
+    protected override void OnInitialized() 
+        => NavManager.NavigateTo("Account/Login");
 }

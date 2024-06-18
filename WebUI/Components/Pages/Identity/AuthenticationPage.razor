@@ -10,12 +10,12 @@
             if ((await ClientAuthState!).User.Identity!.IsAuthenticated == true)
                 NavManager.NavigateTo("app/home", false, true);
             else
-                NavManager.NavigateTo("Account/login", false, true);
+                NavManager.NavigateTo("Account/Login", false, true);
 
         }
         catch
         {
-            NavManager.NavigateTo("Account/login", false, true);
+            NavManager.NavigateTo("Account/Login", false, true);
         }
     }
 }
