@@ -1,6 +1,9 @@
 ﻿using Application.DTO.Request.Identity;
 using Application.DTO.Response;
+using Application.DTO.Request.ActivityTracker;
 using Application.DTO.Response.Identity;
+using Application.DTO.Response.ActivityTracker;
+
 
 namespace Application.Interface.Identity
 {
@@ -11,8 +14,8 @@ namespace Application.Interface.Identity
         Task<IEnumerable<GetUserWithClaimResponseDTO>> GetUsersWithClaimsAsync();
         Task SetUpAsync();
         Task<ServiceResponse> UpdateUserAsync(ChangeUserClaimRequestDTO model);
-        //Task SaveActivityAsync(ActivityTrackerRequestDTO model);
-        //Task<IEnumerable<ActivityTrackerResponseDTO>> GetActivitiesAsync();
+        Task SaveActivityAsync(ActivityTrackerRequestDTO model);
+        Task<IEnumerable<ActivityTrackerResponseDTO>> GetActivitiesAsync();
 
     }
 }

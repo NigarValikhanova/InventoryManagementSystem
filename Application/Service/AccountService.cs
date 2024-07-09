@@ -1,5 +1,7 @@
-﻿using Application.DTO.Request.Identity;
+﻿using Application.DTO.Request.ActivityTracker;
+using Application.DTO.Request.Identity;
 using Application.DTO.Response;
+using Application.DTO.Response.ActivityTracker;
 using Application.DTO.Response.Identity;
 using Application.Interface.Identity;
 
@@ -22,17 +24,17 @@ namespace Application.Service
         public Task<ServiceResponse> UpdateUserAsync(ChangeUserClaimRequestDTO model)
             => account.UpdateUserAsync(model);
 
-        //private async Task<IEnumerable<ActivityTrackerRequestDTO>> GetActivitiesAsync()
-        //    => await account.GetActivitiesAsync();
+        private async Task<IEnumerable<ActivityTrackerRequestDTO>> GetActivitiesAsync()
+            => await account.GetActivitiesAsync();
 
-        //private Task SaveActivityAsync(ActivityTrackerRequestDTO model)
-        //    =>  account.SaveActivityAsync(model);
+        public Task SaveActivityAsync(ActivityTrackerRequestDTO model)
+            => account.SaveActivityAsync(model);
 
-        //public async Task<IEnumerable<IGrouping<DateTime, ActivityTrackerResponseDTO>>>
-        //{
-        //  var data = (await GetActivitiesAsync()).GroupBy(e=>e.Date).AsEnumerable();
-        //  return data;
-        //}
+        public async Task<IEnumerable<IGrouping<DateTime, ActivityTrackerResponseDTO>>> GroupActivities()
+        {
+          var data = (await GetActivitiesAsync()).GroupBy(e => e.Date).AsEnumerable();
+          return data;
+        }
 
-    }
+}
 }
