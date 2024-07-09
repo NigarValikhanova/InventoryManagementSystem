@@ -25,7 +25,7 @@ namespace Application.Service
             => account.UpdateUserAsync(model);
 
         private async Task<IEnumerable<ActivityTrackerRequestDTO>> GetActivitiesAsync()
-            => await account.GetActivitiesAsync();
+            => (IEnumerable<ActivityTrackerRequestDTO>)await account.GetActivitiesAsync();
 
         public Task SaveActivityAsync(ActivityTrackerRequestDTO model)
             => account.SaveActivityAsync(model);
@@ -33,7 +33,7 @@ namespace Application.Service
         public async Task<IEnumerable<IGrouping<DateTime, ActivityTrackerResponseDTO>>> GroupActivities()
         {
           var data = (await GetActivitiesAsync()).GroupBy(e => e.Date).AsEnumerable();
-          return data;
+          return (IEnumerable<IGrouping<DateTime, ActivityTrackerResponseDTO>>)data;
         }
 
 }
